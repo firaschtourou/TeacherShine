@@ -7,18 +7,19 @@ import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
-    <BrowserRouter>
-    <CartProvider>
-    <Navbar />
+    <BrowserRouter basename="/TeacherShine">
+      <CartProvider>
+        <Navbar />
 
-    <main>
-      <AppRoutes />
-    </main>
-      
-    <Footer />
-    </CartProvider>
+        <main>
+          <AppRoutes />
+        </main>
+
+        <Footer />
+      </CartProvider>
     </BrowserRouter>
   );
 }
 
 export default App;
+

@@ -282,9 +282,7 @@ function ProductDetails() {
               {productImages.length > 0 ? (
                 <img
                   src={productImages[selectedImage]}
-                  alt={`${product.name} - image ${
-                    selectedImage + 1
-                  }`}
+                  alt={product.name}
                   className="product-detail-image"
                 />
               ) : (

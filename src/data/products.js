@@ -1,3 +1,6 @@
+const imagePath = (filename) =>
+  `${process.env.PUBLIC_URL}/images/products/${filename}`;
+
 const products = [
   {
     id: 1,
@@ -6,12 +9,11 @@ const products = [
     price: 9.0,
     category: "Outils enseignants",
     categorySlug: "outils-enseignants",
-    image: "/images/products/Pointeur.png",
-    images:[
-        "/images/products/Pointeur.png",
-        "/images/products/Pointeur2.png",
-
-    ], 
+    image: imagePath("Pointeur.png"),
+    images: [
+      imagePath("Pointeur.png"),
+      imagePath("Pointeur2.png"),
+    ],
     badge: "Populaire",
     description:
       "Un pointeur pratique et léger pour accompagner vos présentations en classe.",
@@ -25,7 +27,7 @@ const products = [
     price: 13.0,
     category: "Outils enseignants",
     categorySlug: "outils-enseignants",
-    image: "/images/products/Sonnette.png",
+    image: imagePath("Sonnette.png"),
     badge: "Nouveau",
     description:
       "Une sonnette pratique pour attirer facilement l'attention des élèves.",
@@ -39,7 +41,7 @@ const products = [
     price: 22.0,
     category: "Sacs & trousses",
     categorySlug: "sacs-trousses",
-    image: "/images/products/TrousseNoir.png",
+    image: imagePath("TrousseNoir.png"),
     badge: "",
     description:
       "Une trousse pratique pour organiser vos accessoires du quotidien.",
@@ -53,7 +55,7 @@ const products = [
     price: 25.0,
     category: "Sacs & trousses",
     categorySlug: "sacs-trousses",
-    image: "/images/products/TrousseRose.png",
+    image: imagePath("TrousseRose.png"),
     badge: "",
     description:
       "Une trousse élégante et pratique pour vos accessoires.",
@@ -67,7 +69,7 @@ const products = [
     price: 89.0,
     category: "Sacs & trousses",
     categorySlug: "sacs-trousses",
-    image: "/images/products/Cartable.png",
+    image: imagePath("Cartable.png"),
     badge: "",
     description:
       "Un cartable pratique pour transporter facilement vos affaires.",
@@ -81,7 +83,7 @@ const products = [
     price: 40.0,
     category: "Stickers & tampons",
     categorySlug: "stickers-tampons",
-    image: "/images/products/RubanStickers.png",
+    image: imagePath("RubanStickers.png"),
     badge: "",
     description:
       "Des stickers pratiques pour décorer, organiser et encourager.",
@@ -95,7 +97,7 @@ const products = [
     price: 27.0,
     category: "Accessoires",
     categorySlug: "accessoires",
-    image: "/images/products/Portfeuille.png",
+    image: imagePath("Portfeuille.png"),
     badge: "",
     description:
       "Un portefeuille compact et pratique.",
@@ -109,7 +111,7 @@ const products = [
     price: 35.0,
     category: "Accessoires magnétiques",
     categorySlug: "accessoires-magnetiques",
-    image: "/images/products/PorteAStyloMag.png",
+    image: imagePath("PorteAStyloMag.png"),
     badge: "Nouveau",
     description:
       "Un porte-stylo magnétique pratique pour garder vos stylos à portée de main.",
@@ -123,25 +125,25 @@ const products = [
     price: 36.0,
     category: "Activités",
     categorySlug: "activites",
-    image: "/images/products/balle.png",
+    image: imagePath("balle.png"),
     badge: "",
     description:
       "Des accessoires amusants pour vos activités en classe.",
     available: true,
     variants: [
-    {
-      id: "22 Pièce",
-      name: "22 Pièce",
-      pages: 22,
-      price: 36.0,
-    },
-    {
-      id: "40 Pièce",
-      name: "40 Pièce",
-      pages: 40,
-      price: 56.0,
-    },
-  ]
+      {
+        id: "22 Pièce",
+        name: "22 Pièce",
+        pages: 22,
+        price: 36.0,
+      },
+      {
+        id: "40 Pièce",
+        name: "40 Pièce",
+        pages: 40,
+        price: 56.0,
+      },
+    ],
   },
 
   {
@@ -151,25 +153,25 @@ const products = [
     price: 10.0,
     category: "Accessoires magnétiques",
     categorySlug: "accessoires-magnetiques",
-    image: "/images/products/BtnMang.png",
+    image: imagePath("BtnMang.png"),
     badge: "",
     description:
       "Un accessoire magnétique pratique pour votre organisation.",
     available: true,
     variants: [
-    {
-      id: "10 Pièce",
-      name: "10 Pièce",
-      pages: 10,
-      price: 10.0,
-    },
-    {
-      id: "20 Pièce",
-      name: "20 Pièce",
-      pages: 20,
-      price: 20.0,
-    },
-  ]
+      {
+        id: "10 Pièce",
+        name: "10 Pièce",
+        pages: 10,
+        price: 10.0,
+      },
+      {
+        id: "20 Pièce",
+        name: "20 Pièce",
+        pages: 20,
+        price: 20.0,
+      },
+    ],
   },
 
   {
@@ -179,7 +181,7 @@ const products = [
     price: 58.0,
     category: "Sacs & trousses",
     categorySlug: "sacs-trousses",
-    image: "/images/products/Sac1.png",
+    image: imagePath("Sac1.png"),
     badge: "",
     description:
       "Un sac pratique adapté au quotidien des enseignants.",
@@ -193,7 +195,7 @@ const products = [
     price: 58.0,
     category: "Sacs & trousses",
     categorySlug: "sacs-trousses",
-    image: "/images/products/Sac2.png",
+    image: imagePath("Sac2.png"),
     badge: "",
     description:
       "Un sac pratique avec un design adapté au quotidien.",
@@ -207,7 +209,7 @@ const products = [
     price: 38.0,
     category: "Jeux éducatifs",
     categorySlug: "jeux-educatifs",
-    image: "/images/products/fishing game.png",
+    image: imagePath("fishing game.png"),
     badge: "Top vente",
     description:
       "Un jeu amusant pour développer différentes compétences tout en jouant.",
@@ -221,7 +223,7 @@ const products = [
     price: 38.0,
     category: "Jeux éducatifs",
     categorySlug: "jeux-educatifs",
-    image: "/images/products/WordGame.jpeg",
+    image: imagePath("WordGame.jpeg"),
     badge: "",
     description:
       "Un jeu autour des mots pour rendre les activités plus interactives.",
@@ -235,7 +237,7 @@ const products = [
     price: 40.0,
     category: "Jeux éducatifs",
     categorySlug: "jeux-educatifs",
-    image: "/images/products/SoundGame.jpeg",
+    image: imagePath("SoundGame.jpeg"),
     badge: "",
     description:
       "Une activité ludique basée sur les sons.",
@@ -249,7 +251,7 @@ const products = [
     price: 20.0,
     category: "Jeux éducatifs",
     categorySlug: "jeux-educatifs",
-    image: "/images/products/LikeDislikeGame.png",
+    image: imagePath("LikeDislikeGame.png"),
     badge: "",
     description:
       "Une activité interactive pour faire participer les élèves.",
@@ -263,7 +265,7 @@ const products = [
     price: 10.0,
     category: "Outils enseignants",
     categorySlug: "outils-enseignants",
-    image: "/images/products/fleche.png",
+    image: imagePath("fleche.png"),
     badge: "",
     description:
       "Une flèche pratique pour vos activités et présentations.",
@@ -277,7 +279,7 @@ const products = [
     price: 25.0,
     category: "Outils enseignants",
     categorySlug: "outils-enseignants",
-    image: "/images/products/TimerStand1.png",
+    image: imagePath("TimerStand1.png"),
     badge: "",
     description:
       "Un support pratique pour gérer le temps pendant vos activités.",
@@ -291,7 +293,7 @@ const products = [
     price: 40.0,
     category: "Outils enseignants",
     categorySlug: "outils-enseignants",
-    image: "/images/products/TimerStand2.png",
+    image: imagePath("TimerStand2.png"),
     badge: "",
     description:
       "Un support timer pratique pour organiser vos activités.",
@@ -305,7 +307,7 @@ const products = [
     price: 5.0,
     category: "Récompenses",
     categorySlug: "recompenses",
-    image: "/images/products/Couronne.png",
+    image: imagePath("Couronne.png"),
     badge: "",
     description:
       "Une petite récompense pour valoriser les efforts des élèves.",
@@ -319,7 +321,7 @@ const products = [
     price: 2.5,
     category: "Récompenses",
     categorySlug: "recompenses",
-    image: "/images/products/Medaille.png",
+    image: imagePath("Medaille.png"),
     badge: "",
     description:
       "Des médailles pour féliciter et encourager les élèves.",
@@ -333,7 +335,7 @@ const products = [
     price: 7.0,
     category: "Récompenses",
     categorySlug: "recompenses",
-    image: "/images/products/Trophés.png",
+    image: imagePath("Trophés.png"),
     badge: "",
     description:
       "Des trophées pour célébrer les réussites.",
@@ -347,7 +349,7 @@ const products = [
     price: 45.0,
     category: "Récompenses",
     categorySlug: "recompenses",
-    image: "/images/products/star_box.png",
+    image: imagePath("star_box.png"),
     badge: "",
     description:
       "Une boîte de récompenses pour motiver les élèves.",
@@ -361,7 +363,7 @@ const products = [
     price: 36.0,
     category: "Stickers & tampons",
     categorySlug: "stickers-tampons",
-    image: "/images/products/stamps arb 5p.png",
+    image: imagePath("stamps arb 5p.png"),
     badge: "",
     description:
       "Des tampons en arabe pour accompagner vos corrections.",
@@ -375,7 +377,7 @@ const products = [
     price: 36.0,
     category: "Stickers & tampons",
     categorySlug: "stickers-tampons",
-    image: "/images/products/Stamps FR.png",
+    image: imagePath("Stamps FR.png"),
     badge: "",
     description:
       "Des tampons en français pour vos corrections.",
@@ -389,7 +391,7 @@ const products = [
     price: 36.0,
     category: "Stickers & tampons",
     categorySlug: "stickers-tampons",
-    image: "/images/products/Stamps Eng.png",
+    image: imagePath("Stamps Eng.png"),
     badge: "",
     description:
       "Des tampons en anglais pour vos corrections.",
@@ -403,7 +405,7 @@ const products = [
     price: 58.0,
     category: "Sacs & trousses",
     categorySlug: "sacs-trousses",
-    image: "/images/products/Sac3.jpeg",
+    image: imagePath("Sac3.jpeg"),
     badge: "",
     description:
       "Un sac pratique et adapté aux besoins des enseignants.",
@@ -417,7 +419,7 @@ const products = [
     price: 58.0,
     category: "Sacs & trousses",
     categorySlug: "sacs-trousses",
-    image: "/images/products/Sac4.png",
+    image: imagePath("Sac4.png"),
     badge: "",
     description:
       "Un sac pratique pour transporter vos accessoires.",
@@ -431,7 +433,7 @@ const products = [
     price: 40.0,
     category: "Jeux éducatifs",
     categorySlug: "jeux-educatifs",
-    image: "/images/products/math game.png",
+    image: imagePath("math game.png"),
     badge: "",
     description:
       "Un jeu éducatif pour rendre les activités mathématiques plus amusantes.",
@@ -445,365 +447,328 @@ const products = [
     price: 20.0,
     category: "Sacs & trousses",
     categorySlug: "sacs-trousses",
-    image: "/images/products/Trousse Kaki.png",
+    image: imagePath("Trousse Kaki.png"),
     badge: "",
     description:
       "Une trousse pratique avec un style kaki.",
     available: true,
   },
-{
-  id: 31,
-  name: "Journal Français",
-  slug: "journal-français",
-  price: 35.0,
 
-  category: "Journal & Cahier",
-  categorySlug: "journal-cahier",
+  {
+    id: 31,
+    name: "Journal Français",
+    slug: "journal-français",
+    price: 35.0,
+    category: "Journal & Cahier",
+    categorySlug: "journal-cahier",
+    image: imagePath("J1.png"),
+    images: [
+      imagePath("J1.png"),
+      imagePath("J2.png"),
+    ],
+    badge: "",
+    description:
+      "Un journal d'année pratique et présentable, disponible en plusieurs formats selon le nombre de pages.",
+    available: true,
+    variants: [
+      {
+        id: "100-pages",
+        name: "100 pages",
+        pages: 100,
+        price: 35.0,
+      },
+      {
+        id: "150-pages",
+        name: "150 pages",
+        pages: 150,
+        price: 40.0,
+      },
+      {
+        id: "200-pages",
+        name: "200 pages",
+        pages: 200,
+        price: 55.0,
+      },
+      {
+        id: "250-pages",
+        name: "250 pages",
+        pages: 250,
+        price: 67.0,
+      },
+    ],
+  },
 
-  image: "/images/products/J1.png",
+  {
+    id: 32,
+    name: "Journal Arabe",
+    slug: "journal-arabe",
+    price: 35.0,
+    category: "Journal & Cahier",
+    categorySlug: "journal-cahier",
+    image: imagePath("J3.png"),
+    images: [
+      imagePath("J3.png"),
+      imagePath("J4.png"),
+    ],
+    badge: "",
+    description:
+      "Un journal d'année pratique et présentable, disponible en plusieurs formats selon le nombre de pages.",
+    available: true,
+    variants: [
+      {
+        id: "100-pages",
+        name: "100 pages",
+        pages: 100,
+        price: 35.0,
+      },
+      {
+        id: "150-pages",
+        name: "150 pages",
+        pages: 150,
+        price: 40.0,
+      },
+      {
+        id: "200-pages",
+        name: "200 pages",
+        pages: 200,
+        price: 55.0,
+      },
+      {
+        id: "250-pages",
+        name: "250 pages",
+        pages: 250,
+        price: 67.0,
+      },
+    ],
+  },
 
-  images: [
-    "/images/products/J1.png",
-    "/images/products/J2.png",
-  ],
+  {
+    id: 33,
+    name: "Journal Anglais",
+    slug: "journal-anglais",
+    price: 35.0,
+    category: "Journal & Cahier",
+    categorySlug: "journal-cahier",
+    image: imagePath("J6.png"),
+    images: [
+      imagePath("J6.png"),
+      imagePath("J5.png"),
+    ],
+    badge: "",
+    description:
+      "Un journal d'année pratique et présentable, disponible en plusieurs formats selon le nombre de pages.",
+    available: true,
+    variants: [
+      {
+        id: "100-pages",
+        name: "100 pages",
+        pages: 100,
+        price: 35.0,
+      },
+      {
+        id: "150-pages",
+        name: "150 pages",
+        pages: 150,
+        price: 40.0,
+      },
+      {
+        id: "200-pages",
+        name: "200 pages",
+        pages: 200,
+        price: 55.0,
+      },
+      {
+        id: "250-pages",
+        name: "250 pages",
+        pages: 250,
+        price: 67.0,
+      },
+    ],
+  },
 
-  badge: "",
+  {
+    id: 34,
+    name: "Journal Français 2",
+    slug: "journal-français2",
+    price: 35.0,
+    category: "Journal & Cahier",
+    categorySlug: "journal-cahier",
+    image: imagePath("J7.png"),
+    images: [
+      imagePath("J7.png"),
+      imagePath("J8.png"),
+    ],
+    badge: "",
+    description:
+      "Un journal d'année pratique et présentable, disponible en plusieurs formats selon le nombre de pages.",
+    available: true,
+    variants: [
+      {
+        id: "100-pages",
+        name: "100 pages",
+        pages: 100,
+        price: 35.0,
+      },
+      {
+        id: "150-pages",
+        name: "150 pages",
+        pages: 150,
+        price: 40.0,
+      },
+      {
+        id: "200-pages",
+        name: "200 pages",
+        pages: 200,
+        price: 55.0,
+      },
+      {
+        id: "250-pages",
+        name: "250 pages",
+        pages: 250,
+        price: 67.0,
+      },
+    ],
+  },
 
-  description:
-    "Un journal d'année pratique et présentable, disponible en plusieurs formats selon le nombre de pages.",
+  {
+    id: 35,
+    name: "استراتجية الفشار",
+    slug: "stratégie popcorn",
+    price: 15.0,
+    category: "Stratégie",
+    categorySlug: "stratégie",
+    image: imagePath("popcorn.png"),
+    badge: "",
+    description:
+      "1 boîte + 6P Popcorn ludique et coloré, idéal pour l'organisation de la classe (Plastifée)",
+    available: true,
+  },
 
-  available: true,
+  {
+    id: 36,
+    name: "استراتجية كورة المرمى",
+    slug: "stratégie Football",
+    price: 20.0,
+    category: "Stratégie",
+    categorySlug: "stratégie",
+    image: imagePath("strategie football.png"),
+    badge: "",
+    description:
+      "4 Ballons & 2 Goals : une stratégie ludique qui transforme les objectifs d’apprentissage en un véritable défi à relever (Plastifée)",
+    available: true,
+  },
 
-  variants: [
-    {
-      id: "100-pages",
-      name: "100 pages",
-      pages: 100,
-      price: 35.0,
-    },
-    {
-      id: "150-pages",
-      name: "150 pages",
-      pages: 150,
-      price: 40.0,
-    },
-    {
-      id: "200-pages",
-      name: "200 pages",
-      pages: 200,
-      price: 55.0,
-    },
-    {
-      id: "250-pages",
-      name: "250 pages",
-      pages: 250,
-      price: 67.0,
-    },
-  ],
-},
-{
-  id: 32,
-  name: "Journal Arabe",
-  slug: "journal-arabe",
-  price: 35.0,
+  {
+    id: 37,
+    name: "استراتجية جيري",
+    slug: "stratégie Jerry",
+    price: 15.0,
+    category: "Stratégie",
+    categorySlug: "stratégie",
+    image: imagePath("jerry strategy.png"),
+    badge: "",
+    description:
+      "1 Jerry + 6P Fromage idéal pour l'organisation de la classe (Plastifée)",
+    available: true,
+  },
 
-  category: "Journal & Cahier",
-  categorySlug: "journal-cahier",
+  {
+    id: 38,
+    name: "استراتجية الفوانيس",
+    slug: "stratégie des lampes",
+    price: 15.0,
+    category: "Stratégie",
+    categorySlug: "stratégie",
+    image: imagePath("lampe.png"),
+    badge: "",
+    description:
+      "6 lampes pédagogiques : un support ludique pour mettre en lumière les informations pertinentes, enrichir la production écrite et rappeler les notions essentielles de façon simple et visuelle (Plastifée)",
+    available: true,
+  },
 
-  image: "/images/products/J3.png",
+  {
+    id: 39,
+    name: "استراتجية ساعي البريد",
+    slug: "stratégie Poste Man",
+    price: 8.0,
+    category: "Stratégie",
+    categorySlug: "stratégie",
+    image: imagePath("posteman.png"),
+    badge: "",
+    description:
+      "Stratégie « Le facteur » : une activité ludique basée sur des messages ou des cartes distribués par un élève désigné comme facteur par l’enseignant. Elle favorise la participation, les échanges et la communication entre les élèves (Plastifée)",
+    available: true,
+  },
 
-  images: [
-    "/images/products/J3.png",
-    "/images/products/J4.png",
-  ],
+  {
+    id: 40,
+    name: "استراتجية المفتاح و القفل",
+    slug: "stratégie key",
+    price: 15.0,
+    category: "Stratégie",
+    categorySlug: "stratégie",
+    image: imagePath("key.png"),
+    badge: "",
+    description:
+      "3 serrures + clés : un support ludique pour travailler les synonymes et les antonymes en associant chaque mot à la clé correspondante, tout en rendant l’apprentissage du vocabulaire interactif et amusant (Plastifée)",
+    available: true,
+  },
 
-  badge: "",
+  {
+    id: 41,
+    name: "Serre Tête",
+    slug: "stratégie Serre Tête",
+    price: 35.0,
+    category: "Récompenses",
+    categorySlug: "recompenses",
+    image: imagePath("Serre tete.png"),
+    badge: "",
+    description:
+      "5P Serre-têtes à étiquettes : un support ludique permettant d’insérer des étiquettes sur la tête des élèves pour organiser des devinettes et des jeux de vocabulaire, tout en facilitant la communication et les interactions en classe.",
+    available: true,
+  },
 
-  description:
-    "Un journal d'année pratique et présentable, disponible en plusieurs formats selon le nombre de pages.",
+  {
+    id: 42,
+    name: "Cube Inserable",
+    slug: "stratégie Cube Inserable",
+    price: 35.0,
+    category: "Activités",
+    categorySlug: "activités",
+    image: imagePath("Cube Inserable.png"),
+    badge: "",
+    description:
+      "Cube insérable à 6 faces : un outil pédagogique modulable avec 6 pochettes transparentes permettant d’insérer des cartes personnalisables selon le contenu de chaque leçon, pour varier les activités et rendre l’apprentissage plus interactif.",
+    available: true,
+  },
 
-  available: true,
+  {
+    id: 43,
+    name: "Cube Effaçable",
+    slug: "stratégie Cube Effaçable",
+    price: 35.0,
+    category: "Activités",
+    categorySlug: "activités",
+    image: imagePath("Cube Effaçable.png"),
+    badge: "",
+    description:
+      "Cube effaçable – 1 pièce + stylo spécial + effaceur : un outil pratique et réutilisable pour proposer des activités variées, écrire directement sur le cube, effacer et recommencer à volonté.",
+    available: true,
+  },
 
-  variants: [
-    {
-      id: "100-pages",
-      name: "100 pages",
-      pages: 100,
-      price: 35.0,
-    },
-    {
-      id: "150-pages",
-      name: "150 pages",
-      pages: 150,
-      price: 40.0,
-    },
-    {
-      id: "200-pages",
-      name: "200 pages",
-      pages: 200,
-      price: 55.0,
-    },
-    {
-      id: "250-pages",
-      name: "250 pages",
-      pages: 250,
-      price: 67.0,
-    },
-  ],
-},
-{
-  id: 33,
-  name: "Journal Anglais",
-  slug: "journal-anglais",
-  price: 35.0,
-
-  category: "Journal & Cahier",
-  categorySlug: "journal-cahier",
-
-  image: "/images/products/J6.png",
-
-  images: [
-    "/images/products/J6.png",
-    "/images/products/J5.png",
-  ],
-
-  badge: "",
-
-  description:
-    "Un journal d'année pratique et présentable, disponible en plusieurs formats selon le nombre de pages.",
-
-  available: true,
-
-  variants: [
-    {
-      id: "100-pages",
-      name: "100 pages",
-      pages: 100,
-      price: 35.0,
-    },
-    {
-      id: "150-pages",
-      name: "150 pages",
-      pages: 150,
-      price: 40.0,
-    },
-    {
-      id: "200-pages",
-      name: "200 pages",
-      pages: 200,
-      price: 55.0,
-    },
-    {
-      id: "250-pages",
-      name: "250 pages",
-      pages: 250,
-      price: 67.0,
-    },
-  ],
-},
-{
-  id: 34,
-  name: "Journal Français 2",
-  slug: "journal-français2",
-  price: 35.0,
-
-  category: "Journal & Cahier",
-  categorySlug: "journal-cahier",
-
-  image: "/images/products/J7.png",
-
-  images: [
-    "/images/products/J7.png",
-    "/images/products/J8.png",
-  ],
-
-  badge: "",
-
-  description:
-    "Un journal d'année pratique et présentable, disponible en plusieurs formats selon le nombre de pages.",
-
-  available: true,
-
-  variants: [
-    {
-      id: "100-pages",
-      name: "100 pages",
-      pages: 100,
-      price: 35.0,
-    },
-    {
-      id: "150-pages",
-      name: "150 pages",
-      pages: 150,
-      price: 40.0,
-    },
-    {
-      id: "200-pages",
-      name: "200 pages",
-      pages: 200,
-      price: 55.0,
-    },
-    {
-      id: "250-pages",
-      name: "250 pages",
-      pages: 250,
-      price: 67.0,
-    },
-  ],
-},
-{
-  id: 35,
-  name: "استراتجية الفشار",
-  slug: "stratégie popcorn",
-  price: 15.0,
-
-  category: "Stratégie",
-  categorySlug: "stratégie",
-
-  image: "/images/products/popcorn.png",
-  badge: "",
-  description:
-    "1 boîte + 6P Popcorn ludique et coloré, idéal pour l'organisation de la classe (Plastifée)",
-  available: true,
-
-  
-},
-{
-  id: 36,
-  name: "استراتجية كورة المرمى",
-  slug: "stratégie Football",
-  price: 20.0,
-
-  category: "Stratégie",
-  categorySlug: "stratégie",
-
-  image: "/images/products/strategie football.png",
-  badge: "",
-  description:
-    "4 Ballons & 2 Goals : une stratégie ludique qui transforme les objectifs d’apprentissage en un véritable défi à relever (Plastifée)",
-  available: true, 
-},
-{
-  id: 37,
-  name: "استراتجية جيري",
-  slug: "stratégie Jerry",
-  price: 15.0,
-
-  category: "Stratégie",
-  categorySlug: "stratégie",
-
-  image: "/images/products/jerry strategy.png",
-  badge: "",
-  description:
-    "1 Jerry + 6P Fromage idéal pour l'organisation de la classe (Plastifée)",
-  available: true, 
-},
-{
-  id: 38,
-  name: "استراتجية الفوانيس",
-  slug: "stratégie des lampes",
-  price: 15.0,
-
-  category: "Stratégie",
-  categorySlug: "stratégie",
-
-  image: "/images/products/lampe.png",
-  badge: "",
-  description:
-    "6 lampes pédagogiques : un support ludique pour mettre en lumière les informations pertinentes, enrichir la production écrite et rappeler les notions essentielles de façon simple et visuelle (Plastifée)",
-  available: true, 
-},
-{
-  id: 39,
-  name: "استراتجية ساعي البريد",
-  slug: "stratégie Poste Man",
-  price: 8.0,
-
-  category: "Stratégie",
-  categorySlug: "stratégie",
-
-  image: "/images/products/posteman.png",
-  badge: "",
-  description:
-    "Stratégie « Le facteur » : une activité ludique basée sur des messages ou des cartes distribués par un élève désigné comme facteur par l’enseignant. Elle favorise la participation, les échanges et la communication entre les élèves (Plastifée)",
-  available: true, 
-},
-{
-  id: 40,
-  name: "استراتجية المفتاح و القفل",
-  slug: "stratégie key",
-  price: 15.0,
-
-  category: "Stratégie",
-  categorySlug: "stratégie",
-
-  image: "/images/products/key.png",
-  badge: "",
-  description:
-    "3 serrures + clés : un support ludique pour travailler les synonymes et les antonymes en associant chaque mot à la clé correspondante, tout en rendant l’apprentissage du vocabulaire interactif et amusant (Plastifée)",
-  available: true, 
-},
-{
-  id: 41,
-  name: "Serre Tête",
-  slug: "stratégie Serre Tête",
-  price: 35.0,
-
-  category: "Récompenses",
-  categorySlug: "recompenses",
-
-  image: "/images/products/Serre tete.png",
-  badge: "",
-  description:
-    " 5P Serre-têtes à étiquettes : un support ludique permettant d’insérer des étiquettes sur la tête des élèves pour organiser des devinettes et des jeux de vocabulaire, tout en facilitant la communication et les interactions en classe.",
-  available: true, 
-},
-{
-  id: 42,
-  name: "Cube Inserable",
-  slug: "stratégie Cube Inserable",
-  price: 35.0,
-
-  category: "Activités",
-  categorySlug: "activités",
-
-  image: "/images/products/Cube Inserable.png",
-  badge: "",
-  description:
-    "Cube insérable à 6 faces : un outil pédagogique modulable avec 6 pochettes transparentes permettant d’insérer des cartes personnalisables selon le contenu de chaque leçon, pour varier les activités et rendre l’apprentissage plus interactif.",
-  available: true, 
-},
-{
-  id: 43,
-  name: "Cube Effaçable",
-  slug: "stratégie Cube Effaçable",
-  price: 35.0,
-
-  category: "Activités",
-  categorySlug: "activités",
-
-  image: "/images/products/Cube Effaçable.png",
-  badge: "",
-  description:
-    "Cube effaçable – 1 pièce + stylo spécial + effaceur : un outil pratique et réutilisable pour proposer des activités variées, écrire directement sur le cube, effacer et recommencer à volonté.",
-  available: true, 
-},
-{
-  id: 44,
-  name: "Tableau de Résponsabilité",
-  slug: "Tableau de Résponsabilité",
-  price: 35.0,
-
-  category: "Stratégie",
-  categorySlug: "stratégie",
-
-  image: "/images/products/Tableau de Résponsabilité.png",
-  badge: "",
-  description:
-    "un support pratique et réutilisable pour organiser les responsabilités de la classe, responsabiliser les élèves et favoriser une gestion de classe efficace.",
-  available: true, 
-},
+  {
+    id: 44,
+    name: "Tableau de Résponsabilité",
+    slug: "Tableau de Résponsabilité",
+    price: 35.0,
+    category: "Stratégie",
+    categorySlug: "stratégie",
+    image: imagePath("Tableau de Résponsabilité.png"),
+    badge: "",
+    description:
+      "Un support pratique et réutilisable pour organiser les responsabilités de la classe, responsabiliser les élèves et favoriser une gestion de classe efficace.",
+    available: true,
+  },
 ];
 
 export default products;
-
