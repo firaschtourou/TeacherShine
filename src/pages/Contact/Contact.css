@@ -1,0 +1,1112 @@
+
+/* =========================================================
+   CONTACT / CHECKOUT PAGE
+   TeacherShine
+   ========================================================= */
+
+.contact-page {
+  min-height: 100vh;
+  padding: 60px 0 90px;
+  background:
+    radial-gradient(circle at 5% 10%, rgba(47, 143, 131, 0.08), transparent 28%),
+    radial-gradient(circle at 95% 20%, rgba(232, 155, 114, 0.08), transparent 25%),
+    var(--background);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.contact-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.contact-hero-content {
+  max-width: 720px;
+}
+
+.contact-eyebrow,
+.contact-empty-eyebrow,
+.order-success-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.contact-hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.12;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.contact-hero h1 span {
+  display: inline-block;
+}
+
+.contact-hero p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.contact-hero-badge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 190px;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  background: var(--primary-light);
+  border-radius: 14px;
+  font-size: 1.3rem;
+}
+
+.contact-hero-badge div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-hero-badge strong {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.contact-hero-badge span:last-child {
+  color: var(--text-light);
+  font-size: 0.78rem;
+}
+
+/* =========================================================
+   STATUS MESSAGE
+   ========================================================= */
+
+.contact-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  padding: 15px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.contact-status.success {
+  color: #246b2a;
+  background: #edf8ee;
+  border: 1px solid #cde8cf;
+}
+
+.contact-status.error {
+  color: #a83232;
+  background: #fff0f0;
+  border: 1px solid #f2cccc;
+}
+
+.status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-weight: 800;
+}
+
+.contact-status.success .status-icon {
+  color: white;
+  background: var(--success);
+}
+
+.contact-status.error .status-icon {
+  color: white;
+  background: var(--danger);
+}
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 370px;
+  gap: 30px;
+  align-items: start;
+}
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.contact-form-card {
+  min-width: 0;
+  padding: 34px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-form-section {
+  padding-bottom: 34px;
+  margin-bottom: 34px;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-form-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.contact-section-heading {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.section-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  color: var(--primary-dark);
+  background: var(--primary-light);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.contact-section-heading > div {
+  min-width: 0;
+}
+
+.section-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.contact-section-heading h2 {
+  margin: 0 0 5px;
+  color: var(--text);
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+
+.contact-section-heading p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.form-field label span {
+  color: var(--danger);
+}
+
+.form-field label small {
+  margin-left: 5px;
+  color: var(--text-light);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 13px 15px;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  outline: none;
+  font-size: 0.9rem;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.form-field input,
+.form-field select {
+  min-height: 48px;
+}
+
+.form-field textarea {
+  min-height: 105px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #aaa;
+}
+
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover {
+  border-color: #c9c3bb;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(47, 143, 131, 0.1);
+  background: #fff;
+}
+
+.field-help {
+  margin-top: 7px;
+  color: var(--text-light);
+  font-size: 0.75rem;
+}
+
+/* =========================================================
+   ORDER PRODUCTS
+   ========================================================= */
+
+.contact-order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-order-item {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  background: #faf9f6;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.contact-order-image {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  background: white;
+  border-radius: 11px;
+}
+
+.contact-order-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-order-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.contact-order-info > span {
+  margin-bottom: 2px;
+  color: var(--primary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.contact-order-info strong {
+  overflow: hidden;
+  color: var(--text);
+  font-size: 0.9rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-order-info small {
+  margin-top: 4px;
+  color: var(--text-light);
+  font-size: 0.76rem;
+}
+
+.contact-order-price {
+  white-space: nowrap;
+  color: var(--primary-dark);
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+   ========================================================= */
+
+.submit-order-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 56px;
+  margin-top: 30px;
+  padding: 15px 22px;
+  color: white;
+  background: var(--primary);
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(47, 143, 131, 0.2);
+  transition:
+    background var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.submit-order-button:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(47, 143, 131, 0.25);
+}
+
+.submit-order-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-order-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.submit-order-button > span:first-child {
+  font-size: 1.1rem;
+}
+
+.submit-arrow {
+  margin-left: auto;
+  font-size: 1.2rem;
+}
+
+.submit-spinner {
+  width: 19px;
+  height: 19px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: submitSpin 0.7s linear infinite;
+}
+
+@keyframes submitSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.submit-note {
+  margin: 13px 0 0;
+  color: var(--text-light);
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   RIGHT SUMMARY
+   ========================================================= */
+
+.contact-summary {
+  position: sticky;
+  top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-summary-card {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.summary-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-card-header > div:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-card-header span {
+  color: var(--primary);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.summary-card-header h2 {
+  margin: 2px 0 0;
+  color: var(--text);
+  font-size: 1.35rem;
+}
+
+.summary-cart-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--primary-light);
+  border-radius: 12px;
+  font-size: 1.15rem;
+}
+
+.summary-products {
+  display: flex;
+  flex-direction: column;
+  max-height: 330px;
+  padding: 18px 24px;
+  overflow-y: auto;
+}
+
+.summary-product {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.summary-product + .summary-product {
+  border-top: 1px solid #f0ede8;
+}
+
+.summary-product-image {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  overflow: visible;
+  background: #faf9f6;
+  border-radius: 10px;
+}
+
+.summary-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.summary-product-image span {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  color: white;
+  background: var(--primary);
+  border: 2px solid white;
+  border-radius: 50%;
+  font-size: 0.63rem;
+  font-weight: 800;
+}
+
+.summary-product-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.summary-product-info strong {
+  overflow: hidden;
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.summary-product-info span {
+  margin-top: 2px;
+  color: var(--text-light);
+  font-size: 0.72rem;
+}
+
+.summary-product > strong {
+  color: var(--text);
+  white-space: nowrap;
+  font-size: 0.78rem;
+}
+
+.summary-divider {
+  height: 1px;
+  margin: 0 24px;
+  background: var(--border);
+}
+
+.summary-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  color: var(--text-light);
+  font-size: 0.82rem;
+}
+
+.summary-line:first-of-type {
+  padding-top: 18px;
+}
+
+.summary-line strong {
+  color: var(--text);
+}
+
+.summary-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 18px 18px;
+  padding: 17px 18px;
+  background: var(--primary-light);
+  border-radius: 13px;
+}
+
+.summary-total span {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.summary-total strong {
+  color: var(--primary-dark);
+  font-size: 1.15rem;
+}
+
+/* =========================================================
+   INFO CARD
+   ========================================================= */
+
+.summary-info-card {
+  display: flex;
+  gap: 13px;
+  padding: 18px;
+  background: var(--accent-light);
+  border: 1px solid #f5d5c5;
+  border-radius: var(--radius-lg);
+}
+
+.summary-info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 11px;
+  font-size: 1rem;
+}
+
+.summary-info-card strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: 0.82rem;
+}
+
+.summary-info-card p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   TRUST CARD
+   ========================================================= */
+
+.summary-trust-card {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trust-item > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  flex-shrink: 0;
+  color: var(--primary-dark);
+  background: var(--primary-light);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.trust-item p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.74rem;
+}
+
+/* =========================================================
+   EMPTY CART
+   ========================================================= */
+
+.contact-empty-cart,
+.order-success-card {
+  max-width: 680px;
+  margin: 70px auto;
+  padding: 60px 35px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-empty-icon,
+.order-success-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  background: var(--primary-light);
+  border-radius: 24px;
+  font-size: 2rem;
+}
+
+.order-success-icon {
+  color: white;
+  background: var(--success);
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+.contact-empty-cart h1,
+.order-success-card h1 {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+
+.contact-empty-cart p,
+.order-success-card p {
+  max-width: 500px;
+  margin: 0 auto;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.contact-empty-button,
+.order-success-primary,
+.order-success-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  margin-top: 28px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition:
+    background var(--transition),
+    transform var(--transition);
+}
+
+.contact-empty-button,
+.order-success-primary {
+  color: white;
+  background: var(--primary);
+}
+
+.contact-empty-button:hover,
+.order-success-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.order-success-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.order-success-secondary {
+  color: var(--text);
+  background: white;
+  border: 1px solid var(--border);
+}
+
+.order-success-secondary:hover {
+  background: #f8f6f2;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 20px;
+  }
+
+  .contact-form-card {
+    padding: 28px;
+  }
+
+  .summary-card-header,
+  .summary-products {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .summary-divider {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .summary-line {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .summary-total {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+}
+
+/* =========================================================
+   MOBILE / TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 40px 0 65px;
+  }
+
+  .contact-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 28px;
+  }
+
+  .contact-hero-badge {
+    width: 100%;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-summary {
+    position: static;
+    order: -1;
+  }
+
+  .contact-form-card {
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .contact-summary-card {
+    border-radius: 20px;
+  }
+
+  .summary-products {
+    max-height: none;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .form-field-full {
+    grid-column: auto;
+  }
+
+  .contact-section-heading {
+    gap: 12px;
+  }
+
+  .section-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .contact-section-heading h2 {
+    font-size: 1.15rem;
+  }
+
+  .contact-section-heading p {
+    font-size: 0.8rem;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .contact-page {
+    padding-top: 28px;
+  }
+
+  .contact-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .contact-hero p {
+    font-size: 0.88rem;
+  }
+
+  .contact-form-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .contact-form-section {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+  }
+
+  .contact-section-heading {
+    align-items: flex-start;
+  }
+
+  .section-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.72rem;
+  }
+
+  .contact-section-heading h2 {
+    font-size: 1.05rem;
+  }
+
+  .contact-section-heading p {
+    font-size: 0.76rem;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-size: 0.85rem;
+  }
+
+  .contact-order-item {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 11px;
+  }
+
+  .contact-order-image {
+    width: 58px;
+    height: 58px;
+  }
+
+  .contact-order-price {
+    grid-column: 2;
+    justify-self: start;
+    margin-top: -4px;
+    font-size: 0.82rem;
+  }
+
+  .summary-card-header {
+    padding: 18px;
+  }
+
+  .summary-products {
+    padding: 12px 18px;
+  }
+
+  .summary-divider {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .summary-line {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .summary-total {
+    margin: 10px 12px 14px;
+  }
+
+  .summary-info-card,
+  .summary-trust-card {
+    padding: 15px;
+  }
+
+  .submit-order-button {
+    min-height: 53px;
+    padding: 13px 16px;
+    font-size: 0.84rem;
+  }
+
+  .submit-arrow {
+    margin-left: 5px;
+  }
+
+  .contact-empty-cart,
+  .order-success-card {
+    margin: 35px auto;
+    padding: 40px 20px;
+    border-radius: 18px;
+  }
+
+  .contact-empty-icon,
+  .order-success-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 20px;
+  }
+
+  .order-success-actions {
+    flex-direction: column;
+  }
+
+  .contact-empty-button,
+  .order-success-primary,
+  .order-success-secondary {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .contact-form-card {
+    padding: 15px;
+  }
+
+  .contact-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .contact-section-heading {
+    gap: 9px;
+  }
+
+  .contact-section-heading h2 {
+    font-size: 0.98rem;
+  }
+
+  .contact-order-item {
+    padding: 9px;
+  }
+
+  .summary-product {
+    grid-template-columns: 45px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .summary-product-image {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .form-field input,
+  .form-field select,
+  .form-field textarea,
+  .submit-order-button,
+  .contact-empty-button,
+  .order-success-primary,
+  .order-success-secondary {
+    transition: none;
+  }
+
+  .submit-spinner {
+    animation: none;
+  }
+}

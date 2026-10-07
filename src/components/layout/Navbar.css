@@ -1,0 +1,984 @@
+/* =========================================================
+   TEACHERSHINE / FOR TEACHERS NAVBAR
+========================================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  height: 78px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-bottom: 1px solid var(--border);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.navbar-container {
+  width: 90%;
+  max-width: var(--container-width);
+
+  height: 100%;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.navbar-brand {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  color: var(--text);
+
+  text-decoration: none;
+
+  flex-shrink: 0;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.navbar-brand:hover {
+  opacity: 0.92;
+}
+
+
+/* =========================================================
+   BRAND LOGO IMAGE
+========================================================= */
+
+.navbar-brand-logo {
+  width: 58px;
+  height: 58px;
+
+  object-fit: contain;
+
+  display: block;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   BRAND TEXT
+========================================================= */
+
+.navbar-brand-text {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+
+  min-width: 0;
+}
+
+
+.navbar-brand-name {
+  color: var(--text);
+
+  font-size: 1.12rem;
+  font-weight: 750;
+
+  line-height: 1.1;
+
+  white-space: nowrap;
+}
+
+
+.navbar-brand-tagline {
+  color: #777;
+
+  font-size: 0.64rem;
+  font-weight: 500;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   DESKTOP MENU
+========================================================= */
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 34px;
+
+  flex: 1;
+}
+
+
+.nav-link {
+  position: relative;
+
+  padding: 8px 0;
+
+  color: #4f4f4f;
+
+  font-size: 0.94rem;
+  font-weight: 550;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+.nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 0;
+  height: 2px;
+
+  transform: translateX(-50%);
+
+  background: var(--primary);
+
+  border-radius: 999px;
+
+  transition:
+    width 0.22s ease;
+}
+
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+
+.nav-link:hover::after {
+  width: 70%;
+}
+
+
+.nav-link.active {
+  color: var(--primary);
+
+  font-weight: 650;
+}
+
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+.navbar-action-button,
+.navbar-cart,
+.mobile-menu-button {
+  position: relative;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background: transparent;
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.navbar-action-button svg,
+.navbar-cart svg,
+.mobile-menu-button svg {
+  width: 20px;
+  height: 20px;
+
+  stroke-width: 1.9;
+}
+
+
+.navbar-action-button:hover,
+.navbar-cart:hover {
+  background: var(--primary-light);
+
+  color: var(--primary);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+.navbar-cart {
+  flex-shrink: 0;
+}
+
+
+.navbar-cart-icon {
+  width: 21px !important;
+  height: 21px !important;
+}
+
+
+.cart-count {
+  position: absolute;
+
+  top: 1px;
+  right: 0;
+
+  min-width: 18px;
+  height: 18px;
+
+  padding: 0 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+
+  background: var(--accent);
+
+  color: var(--white);
+
+  font-size: 0.62rem;
+  font-weight: 750;
+
+  line-height: 1;
+
+  border: 2px solid var(--surface);
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.mobile-menu-button {
+  display: none;
+
+  cursor: pointer;
+}
+
+
+.mobile-menu-button.open {
+  background: var(--primary-light);
+
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   MOBILE OVERLAY
+========================================================= */
+
+.mobile-menu-overlay {
+  display: none;
+
+  position: fixed;
+
+  inset: 78px 0 0 0;
+
+  z-index: 998;
+
+  width: 100%;
+  height: calc(100vh - 78px);
+
+  padding: 0;
+
+  border: none;
+
+  background: rgba(0, 0, 0, 0.25);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+
+.mobile-menu-overlay.visible {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu {
+  display: none;
+}
+
+
+/* =========================================================
+   TABLET
+   769px → 1050px
+========================================================= */
+
+@media screen and (max-width: 1050px) {
+
+  .navbar-container {
+    width: 92%;
+
+    gap: 20px;
+  }
+
+
+  .navbar-menu {
+    gap: 23px;
+  }
+
+
+  .nav-link {
+    font-size: 0.88rem;
+  }
+
+
+  .navbar-brand-tagline {
+    display: none;
+  }
+
+
+  .navbar-brand-logo {
+    width: 54px;
+    height: 54px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   769px → 850px
+========================================================= */
+
+@media screen and (max-width: 850px) {
+
+  .navbar-menu {
+    gap: 17px;
+  }
+
+
+  .navbar-brand-name {
+    font-size: 1rem;
+  }
+
+
+  .navbar-brand-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+
+  .nav-link {
+    font-size: 0.84rem;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   768px and below
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .navbar {
+    height: 70px;
+  }
+
+
+  .navbar-container {
+    width: 93%;
+
+    gap: 12px;
+  }
+
+
+  /* Hide desktop menu */
+
+  .navbar-menu {
+    display: none;
+  }
+
+
+  /* Hide search */
+
+  .navbar-search-button {
+    display: none;
+  }
+
+
+  /* Logo */
+
+  .navbar-brand {
+    gap: 8px;
+  }
+
+
+  .navbar-brand-logo {
+    width: 51px;
+    height: 51px;
+  }
+
+
+  .navbar-brand-name {
+    font-size: 1rem;
+  }
+
+
+  .navbar-brand-tagline {
+    display: block;
+
+    font-size: 0.57rem;
+  }
+
+
+  /* Actions */
+
+  .navbar-actions {
+    gap: 3px;
+  }
+
+
+  .navbar-cart,
+  .mobile-menu-button {
+    width: 41px;
+    height: 41px;
+  }
+
+
+  /* Mobile button */
+
+  .mobile-menu-button {
+    display: flex;
+  }
+
+
+  /* Overlay */
+
+  .mobile-menu-overlay {
+    display: block;
+
+    inset: 70px 0 0 0;
+
+    height: calc(100vh - 70px);
+  }
+
+
+  /* Mobile menu */
+
+  .mobile-menu {
+    position: fixed;
+
+    top: 70px;
+    right: 0;
+
+    width: min(88%, 380px);
+
+    height: calc(100vh - 70px);
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+
+    background: var(--surface);
+
+    border-left: 1px solid var(--border);
+
+    box-shadow:
+      -10px 0 35px rgba(0, 0, 0, 0.08);
+
+    transform: translateX(100%);
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+      transform 0.28s ease,
+      visibility 0.28s ease;
+
+    z-index: 999;
+  }
+
+
+  .mobile-menu.open {
+    transform: translateX(0);
+
+    visibility: visible;
+
+    pointer-events: auto;
+  }
+
+
+  /* Mobile header */
+
+  .mobile-menu-header {
+    padding: 20px;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+
+  .mobile-menu-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+  }
+
+
+  .mobile-menu-logo {
+    width: 48px;
+    height: 48px;
+
+    object-fit: contain;
+  }
+
+
+  .mobile-menu-brand div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+  }
+
+
+  .mobile-menu-brand strong {
+    color: var(--text);
+
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+
+  .mobile-menu-brand span {
+    color: #777;
+
+    font-size: 0.68rem;
+  }
+
+
+  /* Mobile links */
+
+  .mobile-menu-links {
+    flex: 1;
+
+    padding: 8px 14px;
+
+    overflow-y: auto;
+  }
+
+
+  .mobile-nav-link {
+    width: 100%;
+
+    min-height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    padding: 0 12px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text);
+
+    font-size: 0.96rem;
+    font-weight: 550;
+
+    text-decoration: none;
+
+    transition:
+      color 0.2s ease,
+      background 0.2s ease,
+      padding 0.2s ease;
+  }
+
+
+  .mobile-nav-link:hover {
+    color: var(--primary);
+
+    background: var(--primary-light);
+
+    padding-left: 17px;
+  }
+
+
+  .mobile-nav-link.active {
+    color: var(--primary);
+
+    font-weight: 650;
+
+    background: var(--primary-light);
+  }
+
+
+  .mobile-nav-arrow {
+    color: #aaa;
+
+    font-size: 1rem;
+
+    transition:
+      transform 0.2s ease;
+  }
+
+
+  .mobile-nav-link:hover .mobile-nav-arrow {
+    transform: translateX(3px);
+
+    color: var(--primary);
+  }
+
+
+  /* Mobile cart */
+
+  .mobile-cart-content {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+  }
+
+
+  .mobile-cart-content svg {
+    width: 19px;
+    height: 19px;
+  }
+
+
+  .mobile-cart-count {
+    min-width: 22px;
+    height: 22px;
+
+    padding: 0 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 999px;
+
+    background: var(--accent);
+
+    color: var(--white);
+
+    font-size: 0.65rem;
+    font-weight: 700;
+  }
+
+
+  /* Mobile footer */
+
+  .mobile-menu-footer {
+    padding: 17px 20px 22px;
+
+    border-top: 1px solid var(--border);
+
+    background: var(--surface);
+  }
+
+
+  .mobile-menu-footer p {
+    margin: 0 0 10px;
+
+    color: #777;
+
+    font-size: 0.74rem;
+  }
+
+
+  .mobile-contact-button {
+    width: 100%;
+
+    min-height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border-radius: 10px;
+
+    background: var(--primary);
+
+    color: var(--white);
+
+    font-size: 0.84rem;
+    font-weight: 650;
+
+    text-decoration: none;
+
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+
+  .mobile-contact-button:hover {
+    transform: translateY(-1px);
+
+    opacity: 0.92;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   480px and below
+========================================================= */
+
+@media screen and (max-width: 480px) {
+
+  .navbar {
+    height: 64px;
+  }
+
+
+  .navbar-container {
+    width: 92%;
+  }
+
+
+  .navbar-brand-logo {
+    width: 47px;
+    height: 47px;
+  }
+
+
+  .navbar-brand-name {
+    font-size: 0.92rem;
+  }
+
+
+  .navbar-brand-tagline {
+    font-size: 0.53rem;
+  }
+
+
+  .navbar-cart,
+  .mobile-menu-button {
+    width: 38px;
+    height: 38px;
+  }
+
+
+  .navbar-cart svg,
+  .mobile-menu-button svg {
+    width: 19px;
+    height: 19px;
+  }
+
+
+  .cart-count {
+    min-width: 17px;
+    height: 17px;
+
+    font-size: 0.57rem;
+
+    top: 0;
+  }
+
+
+  .mobile-menu-overlay {
+    inset: 64px 0 0 0;
+
+    height: calc(100vh - 64px);
+  }
+
+
+  .mobile-menu {
+    top: 64px;
+
+    height: calc(100vh - 64px);
+
+    width: min(90%, 360px);
+  }
+
+
+  .mobile-menu-header {
+    padding: 17px;
+  }
+
+
+  .mobile-menu-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+
+  .mobile-menu-brand strong {
+    font-size: 0.94rem;
+  }
+
+
+  .mobile-menu-brand span {
+    font-size: 0.63rem;
+  }
+
+
+  .mobile-nav-link {
+    min-height: 51px;
+
+    font-size: 0.9rem;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   360px and below
+========================================================= */
+
+@media screen and (max-width: 360px) {
+
+  .navbar-container {
+    width: 94%;
+  }
+
+
+  .navbar-brand-logo {
+    width: 43px;
+    height: 43px;
+  }
+
+
+  .navbar-brand-name {
+    font-size: 0.84rem;
+  }
+
+
+  .navbar-brand-tagline {
+    display: none;
+  }
+
+
+  .navbar-cart,
+  .mobile-menu-button {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  .mobile-menu {
+    width: 94%;
+  }
+
+
+  .mobile-menu-header {
+    padding: 15px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.navbar a:focus-visible,
+.navbar button:focus-visible {
+  outline: 2px solid var(--primary);
+
+  outline-offset: 3px;
+
+  border-radius: 8px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .navbar *,
+  .navbar *::before,
+  .navbar *::after {
+    transition: none !important;
+  }
+}

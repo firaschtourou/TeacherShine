@@ -1,0 +1,111 @@
+.product-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.category-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.category-button {
+  padding: 9px 16px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background-color: var(--surface);
+  color: var(--text-light);
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.category-button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.category-button.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.sort-container label {
+  color: var(--text-light);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.sort-container select {
+  min-width: 175px;
+  height: 42px;
+  padding: 0 35px 0 13px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background-color: var(--surface);
+  color: var(--text);
+  outline: none;
+  cursor: pointer;
+  font-size: 0.78rem;
+}
+
+.sort-container select:focus {
+  border-color: var(--primary);
+}
+
+@media screen and (max-width: 900px) {
+  .product-filter {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sort-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .category-filter {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  .category-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-button {
+    padding: 8px 13px;
+    font-size: 0.72rem;
+  }
+
+  .sort-container {
+    align-items: center;
+  }
+
+  .sort-container select {
+    min-width: 160px;
+  }
+}
