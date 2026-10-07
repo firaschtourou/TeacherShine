@@ -1,6 +1,10 @@
-const imagePath = (filename) =>
-  `${process.env.PUBLIC_URL}/images/products/${filename}`;
+const images = require.context(
+  "../assets/Products",
+  true,
+  /\.(png|jpe?g|webp|gif)$/i
+);
 
+const imagePath = (filename) => images(`./${filename}`);
 const products = [
   {
     id: 1,
@@ -125,7 +129,7 @@ const products = [
     price: 36.0,
     category: "Activités",
     categorySlug: "activites",
-    image: imagePath("balle.png"),
+    image: imagePath("Balle.png"),
     badge: "",
     description:
       "Des accessoires amusants pour vos activités en classe.",
