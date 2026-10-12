@@ -64,3 +64,61 @@ ul {
   max-width: 600px;
   margin: 0 auto 45px;
 }
+
+/* =========================================
+   FIX : HORIZONTAL SCROLL ON MOBILE
+========================================= */
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: clip;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Éviter que les éléments dépassent l'écran */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+/* Empêcher les enfants flex/grid de forcer
+   une largeur supérieure à leur conteneur */
+.container,
+.section,
+.row,
+[class*="container"],
+[class*="grid"] {
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: clip;
+  }
+
+  .container,
+  .section {
+    width: 100%;
+    max-width: 100%;
+  }
+}
