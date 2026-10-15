@@ -24,7 +24,7 @@ function Cart() {
       return;
     }
 
-    navigate("/contact");
+    navigate("/commander");
   };
 
   if (cartItems.length === 0) {

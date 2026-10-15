@@ -1,30 +1,43 @@
-import { Routes, Route } from "react-router-dom";
+
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "../pages/Home/Home";
 import Shop from "../pages/Shop/Shop";
 import ProductDetails from "../pages/Product/ProductDetails";
 import Cart from "../pages/Cart/Cart";
 import About from "../pages/About/About";
-import Contact from "../pages/Contact/Contact";
+import Commander from "../pages/Commander/Commander";
 import NotFound from "../pages/NotFound/NotFound";
+import Contact from "../pages/Contact/Contact";
+import ScrollToTop from "../components/common/ScrollToTop";
 
 function AppRoutes() {
+  const location = useLocation();
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
+    <>
+      <ScrollToTop />
 
-      <Route path="/shop" element={<Shop />} />
+      <div key={location.pathname} className="page-transition">
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
 
-      <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/shop" element={<Shop />} />
 
-      <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
 
-      <Route path="/about" element={<About />} />
+          <Route path="/cart" element={<Cart />} />
 
-      <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
 
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+          <Route path="/commander" element={<Commander />} />
+
+          <Route path="/contact" element={<Contact />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 

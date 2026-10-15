@@ -1,47 +1,45 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   FiSearch,
   FiShoppingBag,
   FiMenu,
   FiX,
+  FiInfo,
+  FiArrowRight,
 } from "react-icons/fi";
+
 import { useCart } from "../../context/CartContext";
+import brandLogo from "../../assets/logo/logo final.png";
 import "./Navbar.css";
 
-import brandLogo from "../../assets/logo/logo final.png";
+const NAVIGATION_LINKS = [
+  { label: "Accueil", path: "/" },
+  { label: "Boutique", path: "/shop" },
+  { label: "À propos", path: "/about" },
+  { label: "Commander", path: "/commander" },
+  { label: "Contact", path: "/contact" },
+];
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const { totalItems } = useCart();
 
-  /* =========================================
-     CLOSE MOBILE MENU
-  ========================================= */
-
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
-  };
+  }, []);
 
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen((previous) => !previous);
+  }, []);
 
-  /* =========================================
-     TOGGLE MOBILE MENU
-  ========================================= */
-
-  const toggleMenu = () => {
-    setIsMenuOpen((current) => !current);
-  };
-
-
-  /* =========================================
-     CLOSE MENU WITH ESC
-  ========================================= */
-
+  // Fermer le menu avec Échap.
   useEffect(() => {
+    if (!isMenuOpen) return undefined;
+
     const handleEscape = (event) => {
       if (event.key === "Escape") {
-        setIsMenuOpen(false);
+        closeMenu();
       }
     };
 
@@ -50,217 +48,179 @@ function Navbar() {
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
-  }, []);
+  }, [isMenuOpen, closeMenu]);
 
-
-  /* =========================================
-     PREVENT BODY SCROLL WHEN MENU IS OPEN
-  ========================================= */
-
+  // Bloquer le défilement uniquement lorsque le menu mobile est ouvert.
   useEffect(() => {
-    if (isMenuOpen && window.innerWidth <= 768) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (!isMenuOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+
+    const updateBodyScroll = () => {
+      document.body.style.overflow =
+        window.innerWidth <= 768 ? "hidden" : previousOverflow;
+    };
+
+    updateBodyScroll();
+    window.addEventListener("resize", updateBodyScroll);
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("resize", updateBodyScroll);
     };
   }, [isMenuOpen]);
 
-
-  /* =========================================
-     NAVIGATION LINKS
-  ========================================= */
-
-  const navigationLinks = [
-    {
-      label: "Accueil",
-      path: "/",
-    },
-    {
-      label: "Boutique",
-      path: "/shop",
-    },
-    {
-      label: "À propos",
-      path: "/about",
-    },
-    {
-      label: "Commander",
-      path: "/contact",
-    },
-  ];
-
+  const cartLabel = `Panier, ${totalItems} article${
+    totalItems > 1 ? "s" : ""
+  }`;
 
   return (
     <header className="navbar">
-
-      {/* =======================================
-          NAVBAR CONTAINER
-      ======================================= */}
-
+      {/* Barre principale */}
       <div className="navbar-container">
-
-
-        {/* =====================================
-            BRAND LOGO
-        ===================================== */}
-
         <Link
           to="/"
           className="navbar-brand"
           onClick={closeMenu}
-          aria-label="For Teachers - Accueil"
+          aria-label="Teacher Shine - Accueil"
         >
-
           <img
             src={brandLogo}
-            alt="For Teachers"
+            alt="Teacher Shine"
             className="navbar-brand-logo"
           />
 
           <div className="navbar-brand-text">
-
             <span className="navbar-brand-name">
-              Teachers Shine
+              Teacher Shine
             </span>
 
             <span className="navbar-brand-tagline">
               Outils pour enseignants
             </span>
-
           </div>
-
         </Link>
 
-
-        {/* =====================================
-            DESKTOP NAVIGATION
-        ===================================== */}
-
+        {/* Navigation ordinateur */}
         <nav
           className="navbar-menu"
           aria-label="Navigation principale"
         >
-
-          {navigationLinks.map((link) => (
+          {NAVIGATION_LINKS.map(({ label, path }) => (
             <NavLink
-              key={link.path}
-              to={link.path}
+              key={path}
+              to={path}
+              end={path === "/"}
               className={({ isActive }) =>
-                `nav-link ${isActive ? "active" : ""}`
+                `nav-link${isActive ? " active" : ""}`
               }
             >
-              {link.label}
+              {label}
             </NavLink>
           ))}
-
         </nav>
 
-
-        {/* =====================================
-            NAVBAR ACTIONS
-        ===================================== */}
-
+        {/* Actions */}
         <div className="navbar-actions">
-
-
-          {/* Search */}
-
           <button
             type="button"
             className="navbar-action-button navbar-search-button"
             aria-label="Rechercher"
+            onClick={() => {
+              window.dispatchEvent(
+                new CustomEvent("teachershine:open-search")
+              );
+            }}
           >
-            <FiSearch />
+            <FiSearch aria-hidden="true" />
           </button>
-
-
-          {/* Cart */}
 
           <Link
             to="/cart"
             className="navbar-cart"
-            aria-label={`Panier, ${totalItems} article${
-              totalItems > 1 ? "s" : ""
-            }`}
+            aria-label={cartLabel}
             onClick={closeMenu}
           >
-
-            <FiShoppingBag className="navbar-cart-icon" />
+            <FiShoppingBag
+              className="navbar-cart-icon"
+              aria-hidden="true"
+            />
 
             {totalItems > 0 && (
-              <span className="cart-count">
+              <span className="cart-count" aria-hidden="true">
                 {totalItems > 99 ? "99+" : totalItems}
               </span>
             )}
-
           </Link>
-
-
-          {/* Mobile menu */}
 
           <button
             type="button"
-            className={`mobile-menu-button ${
-              isMenuOpen ? "open" : ""
+            className={`mobile-menu-button${
+              isMenuOpen ? " open" : ""
             }`}
             onClick={toggleMenu}
             aria-label={
-              isMenuOpen
-                ? "Fermer le menu"
-                : "Ouvrir le menu"
+              isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
             }
             aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
-
             {isMenuOpen ? (
-              <FiX />
+              <FiX aria-hidden="true" />
             ) : (
-              <FiMenu />
+              <FiMenu aria-hidden="true" />
             )}
-
           </button>
-
         </div>
-
       </div>
 
+      {/* Information sur les commandes de moins de 20 DT */}
+      <div className="navbar-order-notice">
+        <div className="navbar-order-notice-content">
+          <FiInfo
+            className="navbar-order-notice-icon"
+            aria-hidden="true"
+          />
 
-      {/* =======================================
-          MOBILE OVERLAY
-      ======================================= */}
+          <p className="navbar-order-notice-text">
+            <strong>Un petit panier ?</strong>{" "}
+            Pour une commande de moins de 20 DT, contactez-nous
+            directement pour la finaliser.
+          </p>
 
+          <Link
+            to="/contact"
+            className="navbar-order-notice-link"
+            onClick={closeMenu}
+          >
+            Nous contacter
+            <FiArrowRight aria-hidden="true" />
+          </Link>
+        </div>
+      </div>
+
+      {/* Fond du menu mobile */}
       <button
         type="button"
-        className={`mobile-menu-overlay ${
-          isMenuOpen ? "visible" : ""
+        className={`mobile-menu-overlay${
+          isMenuOpen ? " visible" : ""
         }`}
         onClick={closeMenu}
         aria-label="Fermer le menu"
+        aria-hidden={!isMenuOpen}
         tabIndex={isMenuOpen ? 0 : -1}
       />
 
-
-      {/* =======================================
-          MOBILE MENU
-      ======================================= */}
-
+      {/* Menu mobile */}
       <nav
-        className={`mobile-menu ${
-          isMenuOpen ? "open" : ""
-        }`}
+        id="mobile-navigation"
+        className={`mobile-menu${isMenuOpen ? " open" : ""}`}
         aria-label="Navigation mobile"
+        aria-hidden={!isMenuOpen}
+        inert={!isMenuOpen}
       >
-
-        {/* Mobile menu header */}
-
         <div className="mobile-menu-header">
-
           <div className="mobile-menu-brand">
-
             <img
               src={brandLogo}
               alt=""
@@ -268,88 +228,54 @@ function Navbar() {
             />
 
             <div>
-              <strong>
-                For Teachers
-              </strong>
-
-              <span>
-                Outils pour enseignants
-              </span>
+              <strong>Teacher Shine</strong>
+              <span>Outils pour enseignants</span>
             </div>
-
           </div>
-
         </div>
 
-
-        {/* Mobile links */}
-
         <div className="mobile-menu-links">
-
-          {navigationLinks.map((link) => (
+          {NAVIGATION_LINKS.map(({ label, path }) => (
             <NavLink
-              key={link.path}
-              to={link.path}
+              key={path}
+              to={path}
+              end={path === "/"}
               className={({ isActive }) =>
-                `mobile-nav-link ${
-                  isActive ? "active" : ""
-                }`
+                `mobile-nav-link${isActive ? " active" : ""}`
               }
               onClick={closeMenu}
             >
-
-              <span>
-                {link.label}
-              </span>
-
-              <span className="mobile-nav-arrow">
+              <span>{label}</span>
+              <span className="mobile-nav-arrow" aria-hidden="true">
                 →
               </span>
-
             </NavLink>
           ))}
-
-
-          {/* Mobile cart */}
 
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              `mobile-nav-link mobile-cart-link ${
-                isActive ? "active" : ""
+              `mobile-nav-link mobile-cart-link${
+                isActive ? " active" : ""
               }`
             }
             onClick={closeMenu}
           >
-
             <span className="mobile-cart-content">
-
-              <FiShoppingBag />
-
-              <span>
-                Mon panier
-              </span>
-
+              <FiShoppingBag aria-hidden="true" />
+              <span>Mon panier</span>
             </span>
 
             {totalItems > 0 && (
               <span className="mobile-cart-count">
-                {totalItems}
+                {totalItems > 99 ? "99+" : totalItems}
               </span>
             )}
-
           </NavLink>
-
         </div>
 
-
-        {/* Mobile contact CTA */}
-
         <div className="mobile-menu-footer">
-
-          <p>
-            Une question sur un produit ?
-          </p>
+          <p>Une question sur un produit ?</p>
 
           <Link
             to="/contact"
@@ -357,12 +283,10 @@ function Navbar() {
             onClick={closeMenu}
           >
             Nous contacter
+            <FiArrowRight aria-hidden="true" />
           </Link>
-
         </div>
-
       </nav>
-
     </header>
   );
 }
