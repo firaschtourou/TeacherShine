@@ -1,3 +1,4 @@
+
 import { useCallback, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
@@ -33,7 +34,6 @@ function Navbar() {
     setIsMenuOpen((previous) => !previous);
   }, []);
 
-  // Fermer le menu avec Échap.
   useEffect(() => {
     if (!isMenuOpen) return undefined;
 
@@ -50,23 +50,16 @@ function Navbar() {
     };
   }, [isMenuOpen, closeMenu]);
 
-  // Bloquer le défilement uniquement lorsque le menu mobile est ouvert.
+  // Bloquer le scroll derrière le menu sur mobile.
   useEffect(() => {
     if (!isMenuOpen) return undefined;
 
     const previousOverflow = document.body.style.overflow;
 
-    const updateBodyScroll = () => {
-      document.body.style.overflow =
-        window.innerWidth <= 768 ? "hidden" : previousOverflow;
-    };
-
-    updateBodyScroll();
-    window.addEventListener("resize", updateBodyScroll);
+    document.body.style.overflow = "hidden";
 
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener("resize", updateBodyScroll);
     };
   }, [isMenuOpen]);
 
@@ -74,118 +67,127 @@ function Navbar() {
     totalItems > 1 ? "s" : ""
   }`;
 
+  const navLinkClass = ({ isActive }) =>
+    `nav-link${isActive ? " active" : ""}`;
+
+  const mobileLinkClass = ({ isActive }) =>
+    `mobile-nav-link${isActive ? " active" : ""}`;
+
   return (
     <header className="navbar">
       {/* Barre principale */}
-      <div className="navbar-container">
-        <Link
-          to="/"
-          className="navbar-brand"
-          onClick={closeMenu}
-          aria-label="Teacher Shine - Accueil"
-        >
-          <img
-            src={brandLogo}
-            alt="Teacher Shine"
-            className="navbar-brand-logo"
-          />
-
-          <div className="navbar-brand-text">
-            <span className="navbar-brand-name">
-              Teacher Shine
-            </span>
-
-            <span className="navbar-brand-tagline">
-              Outils pour enseignants
-            </span>
-          </div>
-        </Link>
-
-        {/* Navigation ordinateur */}
-        <nav
-          className="navbar-menu"
-          aria-label="Navigation principale"
-        >
-          {NAVIGATION_LINKS.map(({ label, path }) => (
-            <NavLink
-              key={path}
-              to={path}
-              end={path === "/"}
-              className={({ isActive }) =>
-                `nav-link${isActive ? " active" : ""}`
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
-        </nav>
-
-        {/* Actions */}
-        <div className="navbar-actions">
-          <button
-            type="button"
-            className="navbar-action-button navbar-search-button"
-            aria-label="Rechercher"
-            onClick={() => {
-              window.dispatchEvent(
-                new CustomEvent("teachershine:open-search")
-              );
-            }}
-          >
-            <FiSearch aria-hidden="true" />
-          </button>
-
+      <div className="navbar-main">
+        <div className="navbar-container">
           <Link
-            to="/cart"
-            className="navbar-cart"
-            aria-label={cartLabel}
+            to="/"
+            className="navbar-brand"
             onClick={closeMenu}
+            aria-label="Teacher Shine - Accueil"
           >
-            <FiShoppingBag
-              className="navbar-cart-icon"
-              aria-hidden="true"
+            <img
+              src={brandLogo}
+              alt="Teacher Shine"
+              className="navbar-brand-logo"
             />
 
-            {totalItems > 0 && (
-              <span className="cart-count" aria-hidden="true">
-                {totalItems > 99 ? "99+" : totalItems}
+            <div className="navbar-brand-text">
+              <span className="navbar-brand-name">
+                Teacher Shine
               </span>
-            )}
+              <span className="navbar-brand-tagline">
+                Outils pour enseignants
+              </span>
+            </div>
           </Link>
 
-          <button
-            type="button"
-            className={`mobile-menu-button${
-              isMenuOpen ? " open" : ""
-            }`}
-            onClick={toggleMenu}
-            aria-label={
-              isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
-            }
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-navigation"
+          {/* Navigation desktop */}
+          <nav
+            className="navbar-menu"
+            aria-label="Navigation principale"
           >
-            {isMenuOpen ? (
-              <FiX aria-hidden="true" />
-            ) : (
-              <FiMenu aria-hidden="true" />
-            )}
-          </button>
+            {NAVIGATION_LINKS.map(({ label, path }) => (
+              <NavLink
+                key={path}
+                to={path}
+                end={path === "/"}
+                className={navLinkClass}
+              >
+                {label}
+              </NavLink>
+            ))}
+          </nav>
+
+          {/* Actions */}
+          <div className="navbar-actions">
+            <button
+              type="button"
+              className="navbar-action-button navbar-search-button"
+              aria-label="Rechercher"
+              onClick={() => {
+                window.dispatchEvent(
+                  new CustomEvent("teachershine:open-search")
+                );
+              }}
+            >
+              <FiSearch aria-hidden="true" />
+            </button>
+
+            <Link
+              to="/cart"
+              className="navbar-cart"
+              aria-label={cartLabel}
+              onClick={closeMenu}
+            >
+              <FiShoppingBag
+                className="navbar-cart-icon"
+                aria-hidden="true"
+              />
+
+              {totalItems > 0 && (
+                <span className="cart-count" aria-hidden="true">
+                  {totalItems > 99 ? "99+" : totalItems}
+                </span>
+              )}
+            </Link>
+
+            <button
+              type="button"
+              className={`mobile-menu-button${
+                isMenuOpen ? " open" : ""
+              }`}
+              onClick={toggleMenu}
+              aria-label={
+                isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
+              }
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+            >
+              {isMenuOpen ? (
+                <FiX aria-hidden="true" />
+              ) : (
+                <FiMenu aria-hidden="true" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Information sur les commandes de moins de 20 DT */}
+      {/* Bandeau d'information */}
       <div className="navbar-order-notice">
         <div className="navbar-order-notice-content">
-          <FiInfo
-            className="navbar-order-notice-icon"
-            aria-hidden="true"
-          />
+          <span className="navbar-order-notice-icon-wrap">
+            <FiInfo
+              className="navbar-order-notice-icon"
+              aria-hidden="true"
+            />
+          </span>
 
           <p className="navbar-order-notice-text">
-            <strong>Un petit panier ?</strong>{" "}
-            Pour une commande de moins de 20 DT, contactez-nous
-            directement pour la finaliser.
+            <strong>Un petit panier ?</strong>
+            <span>
+              Pour une commande de moins de 20 DT, contactez-nous
+              directement pour la finaliser.
+            </span>
           </p>
 
           <Link
@@ -193,13 +195,13 @@ function Navbar() {
             className="navbar-order-notice-link"
             onClick={closeMenu}
           >
-            Nous contacter
+            <span>Nous contacter</span>
             <FiArrowRight aria-hidden="true" />
           </Link>
         </div>
       </div>
 
-      {/* Fond du menu mobile */}
+      {/* Fond sombre du menu mobile */}
       <button
         type="button"
         className={`mobile-menu-overlay${
@@ -211,7 +213,7 @@ function Navbar() {
         tabIndex={isMenuOpen ? 0 : -1}
       />
 
-      {/* Menu mobile */}
+      {/* Menu latéral mobile */}
       <nav
         id="mobile-navigation"
         className={`mobile-menu${isMenuOpen ? " open" : ""}`}
@@ -227,28 +229,51 @@ function Navbar() {
               className="mobile-menu-logo"
             />
 
-            <div>
+            <div className="mobile-menu-brand-text">
               <strong>Teacher Shine</strong>
               <span>Outils pour enseignants</span>
             </div>
           </div>
+
+          <button
+            type="button"
+            className="mobile-menu-close"
+            onClick={closeMenu}
+            aria-label="Fermer le menu"
+          >
+            <FiX aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className="mobile-menu-intro">
+          <span className="mobile-menu-eyebrow">
+            BIENVENUE CHEZ TEACHER SHINE
+          </span>
+          <p>
+            Tout pour rendre votre quotidien d'enseignant plus
+            simple et plus créatif.
+          </p>
         </div>
 
         <div className="mobile-menu-links">
-          {NAVIGATION_LINKS.map(({ label, path }) => (
+          {NAVIGATION_LINKS.map(({ label, path }, index) => (
             <NavLink
               key={path}
               to={path}
               end={path === "/"}
-              className={({ isActive }) =>
-                `mobile-nav-link${isActive ? " active" : ""}`
-              }
+              className={mobileLinkClass}
               onClick={closeMenu}
             >
-              <span>{label}</span>
-              <span className="mobile-nav-arrow" aria-hidden="true">
-                →
+              <span className="mobile-nav-number">
+                {String(index + 1).padStart(2, "0")}
               </span>
+
+              <span className="mobile-nav-label">{label}</span>
+
+              <FiArrowRight
+                className="mobile-nav-arrow"
+                aria-hidden="true"
+              />
             </NavLink>
           ))}
 
@@ -261,21 +286,30 @@ function Navbar() {
             }
             onClick={closeMenu}
           >
-            <span className="mobile-cart-content">
+            <span className="mobile-nav-number">
               <FiShoppingBag aria-hidden="true" />
-              <span>Mon panier</span>
             </span>
+
+            <span className="mobile-nav-label">Mon panier</span>
 
             {totalItems > 0 && (
               <span className="mobile-cart-count">
                 {totalItems > 99 ? "99+" : totalItems}
               </span>
             )}
+
+            <FiArrowRight
+              className="mobile-nav-arrow"
+              aria-hidden="true"
+            />
           </NavLink>
         </div>
 
         <div className="mobile-menu-footer">
-          <p>Une question sur un produit ?</p>
+          <div className="mobile-menu-footer-copy">
+            <strong>Besoin d'aide ?</strong>
+            <p>Nous sommes là pour vous accompagner.</p>
+          </div>
 
           <Link
             to="/contact"
@@ -285,6 +319,10 @@ function Navbar() {
             Nous contacter
             <FiArrowRight aria-hidden="true" />
           </Link>
+
+          <span className="mobile-menu-signature">
+            TEACHER SHINE · POUR LES ENSEIGNANTS
+          </span>
         </div>
       </nav>
     </header>
